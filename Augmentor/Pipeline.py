@@ -887,7 +887,8 @@ class Pipeline(object):
         else:
             self.add_operation(Flip(probability=probability, top_bottom_left_right="RANDOM"))
 
-    def random_distortion(self, probability, grid_width, grid_height, magnitude):
+    def random_distortion(self, probability, grid_width, grid_height, magnitude,
+                                    resample_filter="NEAREST"):
         """
         Performs a random, elastic distortion on an image.
 
@@ -920,7 +921,8 @@ class Pipeline(object):
             raise ValueError(Pipeline._probability_error_text)
         else:
             self.add_operation(Distort(probability=probability, grid_width=grid_width,
-                                       grid_height=grid_height, magnitude=magnitude))
+                                       grid_height=grid_height, magnitude=magnitude,
+                                    resample_filter=resample_filter))
 
     def gaussian_distortion(self, probability, grid_width, grid_height, magnitude, corner, method, mex=0.5, mey=0.5,
                             sdx=0.05, sdy=0.05):
