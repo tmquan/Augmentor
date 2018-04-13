@@ -764,7 +764,7 @@ class Pipeline(object):
         if not 0 < probability <= 1:
             raise ValueError(Pipeline._probability_error_text)
         else:
-            self.add_operation(Rotate(probability=probability, rotation=-1))
+            self.add_operation(Rotate(probability=probability, rotation=-1, resample_filter=Image.NEAREST))
 
     def rotate(self, probability, max_left_rotation, max_right_rotation, resample_filter=Image.NEAREST):
         """
