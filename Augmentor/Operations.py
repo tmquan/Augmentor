@@ -529,7 +529,7 @@ class Rotate(Operation):
     class.
     """
 
-    def __init__(self, probability, rotation):
+    def __init__(self, probability, rotation, resample_filter):
         """
         As well as the required :attr:`probability` parameter, the
         :attr:`rotation` parameter controls the rotation to perform,
@@ -550,7 +550,7 @@ class Rotate(Operation):
         """
         Operation.__init__(self, probability)
         self.rotation = rotation
-
+        self.resample_filter = resample_filter
     def __str__(self):
         return "Rotate " + str(self.rotation)
 
