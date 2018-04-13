@@ -807,7 +807,7 @@ class Pipeline(object):
             raise ValueError("The max_right_rotation argument must be between 0 and 25.")
         else:
             self.add_operation(RotateRange(probability=probability, max_left_rotation=ceil(max_left_rotation),
-                                           max_right_rotation=ceil(max_right_rotation), resample_filter))
+                                           max_right_rotation=ceil(max_right_rotation), resample_filter=resample_filter))
 
     def rotate_without_crop(self, probability, max_left_rotation, max_right_rotation, resample_filter, expand=False):
         """
@@ -833,7 +833,7 @@ class Pipeline(object):
         :return: None
         """
         self.add_operation(RotateStandard(probability=probability, max_left_rotation=ceil(max_left_rotation),
-                                          max_right_rotation=ceil(max_right_rotation), expand=expand))
+                                          max_right_rotation=ceil(max_right_rotation), resample_filter=resample_filter, expand=expand))
 
     def flip_top_bottom(self, probability):
         """
