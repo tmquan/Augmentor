@@ -481,7 +481,7 @@ class RotateStandard(Operation):
     .. seealso:: For 90 degree rotations, see the :class:`Rotate` class.
     """
 
-    def __init__(self, probability, max_left_rotation, max_right_rotation, resample_filter, expand=False):
+    def __init__(self, probability, max_left_rotation, max_right_rotation, resample_filter=Image.NEAREST, expand=False):
         """
         Documentation to appear.
         """
