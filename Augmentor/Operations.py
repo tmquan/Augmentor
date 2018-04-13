@@ -703,7 +703,7 @@ class Resize(Operation):
     """
     This class is used to resize images by absolute values passed as parameters.
     """
-    def __init__(self, probability, width, height, resample_filter):
+    def __init__(self, probability, width, height, resample_filter=Image.NEAREST):
         """
         Accepts the required probability parameter as well as parameters
         to control the size of the transformed image.
@@ -755,7 +755,7 @@ class Flip(Operation):
     The class allows an image to be mirrored along either
     its x axis or its y axis, or randomly.
     """
-    def __init__(self, probability, top_bottom_left_right):
+    def __init__(self, probability, top_bottom_left_right, resample_filter=Image.NEAREST):
         """
         The direction of the flip, or whether it should be randomised, is
         controlled using the :attr:`top_bottom_left_right` parameter.
@@ -999,7 +999,7 @@ class Shear(Operation):
 
     For sample code with image examples see :ref:`shearing`.
     """
-    def __init__(self, probability, max_shear_left, max_shear_right, resample_filter):
+    def __init__(self, probability, max_shear_left, max_shear_right, resample_filter=Image.NEAREST):
         """
         The shearing is randomised in magnitude, from 0 to the
         :attr:`max_shear_left` or 0 to :attr:`max_shear_right` where the
@@ -1155,7 +1155,7 @@ class Scale(Operation):
     This function will return images that are **larger** than the input
     images.
     """
-    def __init__(self, probability, scale_factor, resample_filter):
+    def __init__(self, probability, scale_factor, resample_filter=Image.NEAREST):
         """
         As the aspect ratio is always kept constant, only a
         :attr:`scale_factor` is required for scaling the image.
@@ -1201,7 +1201,7 @@ class Distort(Operation):
     """
     This class performs randomised, elastic distortions on images.
     """
-    def __init__(self, probability, grid_width, grid_height, magnitude, resample_filter):
+    def __init__(self, probability, grid_width, grid_height, magnitude, resample_filter=Image.NEAREST):
         """
         As well as the probability, the granularity of the distortions
         produced by this class can be controlled using the width and
@@ -1345,7 +1345,7 @@ class GaussianDistortion(Operation):
     """
     This class performs randomised, elastic gaussian distortions on images.
     """
-    def __init__(self, probability, grid_width, grid_height, magnitude, corner, method, mex, mey, sdx, sdy, resample_filter):
+    def __init__(self, probability, grid_width, grid_height, magnitude, corner, method, mex, mey, sdx, sdy, resample_filter=Image.NEAREST):
         """
         As well as the probability, the granularity of the distortions
         produced by this class can be controlled using the width and
@@ -1546,7 +1546,7 @@ class Zoom(Operation):
     This class is used to enlarge images (to zoom) but to return a cropped
     region of the zoomed image of the same size as the original image.
     """
-    def __init__(self, probability, min_factor, max_factor, resample_filter):
+    def __init__(self, probability, min_factor, max_factor, resample_filter=Image.NEAREST):
         """
         The amount of zoom applied is randomised, from between
         :attr:`min_factor` and :attr:`max_factor`. Set these both to the same
@@ -1605,7 +1605,7 @@ class ZoomRandom(Operation):
     This class is used to zoom into random areas of the image.
     """
 
-    def __init__(self, probability, percentage_area, randomise, resample_filter):
+    def __init__(self, probability, percentage_area, randomise, resample_filter=Image.NEAREST):
         """
         Zooms into a random area of the image, rather than the centre of
         the image, as is done by :class:`Zoom`. The zoom factor is fixed

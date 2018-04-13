@@ -690,7 +690,7 @@ class Pipeline(object):
     #    # https://patrykchrabaszcz.github.io/Imagenet32/
     #    self.add_operation(Mean(probability=probability))
 
-    def rotate90(self, probability, resample_filter):
+    def rotate90(self, probability, resample_filter=Image.NEAREST):
         """
         Rotate an image by 90 degrees.
 
@@ -708,7 +708,7 @@ class Pipeline(object):
         else:
             self.add_operation(Rotate(probability=probability, rotation=90))
 
-    def rotate180(self, probability):
+    def rotate180(self, probability, resample_filter=Image.NEAREST):
         """
         Rotate an image by 180 degrees.
 
@@ -726,7 +726,7 @@ class Pipeline(object):
         else:
             self.add_operation(Rotate(probability=probability, rotation=180))
 
-    def rotate270(self, probability):
+    def rotate270(self, probability, resample_filter=Image.NEAREST):
         """
         Rotate an image by 270 degrees.
 
@@ -744,7 +744,7 @@ class Pipeline(object):
         else:
             self.add_operation(Rotate(probability=probability, rotation=270))
 
-    def rotate_random_90(self, probability):
+    def rotate_random_90(self, probability, resample_filter=Image.NEAREST):
         """
         Rotate an image by either 90, 180, or 270 degrees, selected randomly.
 
@@ -766,7 +766,7 @@ class Pipeline(object):
         else:
             self.add_operation(Rotate(probability=probability, rotation=-1))
 
-    def rotate(self, probability, max_left_rotation, max_right_rotation, resample_filter):
+    def rotate(self, probability, max_left_rotation, max_right_rotation, resample_filter=Image.NEAREST):
         """
         Rotate an image by an arbitrary amount.
 
