@@ -1822,7 +1822,7 @@ class ZoomGroundTruth(Operation):
     This class is used to enlarge images (to zoom) but to return a cropped
     region of the zoomed image of the same size as the original image.
     """
-    def __init__(self, probability, min_factor, max_factor, resample_filter=resample_filter):
+    def __init__(self, probability, min_factor, max_factor, resample_filter):
         """
         The amount of zoom applied is randomised, from between
         :attr:`min_factor` and :attr:`max_factor`. Set these both to the same
@@ -1859,7 +1859,7 @@ class ZoomGroundTruth(Operation):
             w, h = image.size
 
             # TODO: Join these two functions together so that we don't have this image_zoom variable lying around.
-            image_zoomed = image.resize((int(round(image.size[0] * factor)), int(round(image.size[1] * factor))), resample=resample_filter)
+            image_zoomed = image.resize((int(round(image.size[0] * factor)), int(round(image.size[1] * factor))), resample=self.resample_filter)
             w_zoomed, h_zoomed = image_zoomed.size
 
             return image_zoomed.crop((floor((float(w_zoomed) / 2) - (float(w) / 2)),
