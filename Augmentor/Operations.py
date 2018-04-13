@@ -604,7 +604,7 @@ class RotateRange(Operation):
     The :ref:`rotating` section describes this in detail and has example
     images to demonstrate this.
     """
-    def __init__(self, probability, max_left_rotation, max_right_rotation, resample_filter):
+    def __init__(self, probability, max_left_rotation, max_right_rotation, resample_filter=Image.NEAREST):
         """
         As well as the required :attr:`probability` parameter, the
         :attr:`max_left_rotation` parameter controls the maximum number of

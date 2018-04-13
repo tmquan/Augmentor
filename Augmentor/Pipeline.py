@@ -690,7 +690,7 @@ class Pipeline(object):
     #    # https://patrykchrabaszcz.github.io/Imagenet32/
     #    self.add_operation(Mean(probability=probability))
 
-    def rotate90(self, probability):
+    def rotate90(self, probability, resample_filter):
         """
         Rotate an image by 90 degrees.
 
@@ -766,7 +766,7 @@ class Pipeline(object):
         else:
             self.add_operation(Rotate(probability=probability, rotation=-1))
 
-    def rotate(self, probability, max_left_rotation, max_right_rotation):
+    def rotate(self, probability, max_left_rotation, max_right_rotation, resample_filter):
         """
         Rotate an image by an arbitrary amount.
 
@@ -807,9 +807,9 @@ class Pipeline(object):
             raise ValueError("The max_right_rotation argument must be between 0 and 25.")
         else:
             self.add_operation(RotateRange(probability=probability, max_left_rotation=ceil(max_left_rotation),
-                                           max_right_rotation=ceil(max_right_rotation)))
+                                           max_right_rotation=ceil(max_right_rotation)), resample_filter)
 
-    def rotate_without_crop(self, probability, max_left_rotation, max_right_rotation, expand=False):
+    def rotate_without_crop(self, probability, max_left_rotation, max_right_rotation, resample_filter, expand=False):
         """
         Rotate an image without automatically cropping.
 
